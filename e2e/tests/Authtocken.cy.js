@@ -1,5 +1,5 @@
 /// <reference types ="Cypress" />
-    const dataJson = require ('../../fixtures/HiererLogin')
+    import { username, password } from '../../fixtures/HiererLogin'
 
 
     describe('User Authorization',()=>{
@@ -15,8 +15,8 @@ it('get auth',()=>{
 
  body : {
      
-    "username" : dataJson.username,
-    "password" : dataJson.password
+    "username" : username,
+    "password" : password
 
  }
 

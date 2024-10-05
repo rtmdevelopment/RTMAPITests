@@ -1,5 +1,5 @@
-<reference types ="Cypress" />
-    const dataJson = require ('../../fixtures/HiererLogin')
+/// <reference types ="Cypress" />
+    import { username, password } from '../../fixtures/HiererLogin'
 
 
     describe ('Search Machine',()=>{
@@ -12,8 +12,8 @@
        
         body : {
             
-           "username" : dataJson.username,
-           "password" : dataJson.password
+           "username" : username,
+           "password" : password
        
         }
        
