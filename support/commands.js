@@ -21,5 +21,15 @@
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
 //
 //
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('generateToken', (username, password) => {
+    return cy.request({
+        method: 'POST',
+        url: 'https://rtmws-a095aea7bc3e.herokuapp.com/api/users/login', // Corrected the URL
+        body: {
+            username: username,
+            password: password,
+        }
+    }).then(response => { return response });
+});
+

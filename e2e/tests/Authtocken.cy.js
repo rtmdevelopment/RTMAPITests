@@ -1,33 +1,27 @@
 /// <reference types ="Cypress" />
-    import { username, password } from '../../fixtures/HiererLogin'
+import { username, password } from '../../fixtures/HiererLogin'
 
 
     describe('User Authorization',()=>{
 
 
-it('get auth',()=>{
-
-
-    cy.request({
-
- method : 'POST',
- url : 'https://rtmws-a095aea7bc3e.herokuapp.com/api/users/login?username=&password=test',
-
- body : {
-     
-    "username" : username,
-    "password" : password
-
- }
-
-    }).then((res)=>{
-        cy.log(JSON.stringify(res))
-        expect(res.status).eq(200)
-    }
-
-    )
+it('tests first login validation', ()=>{
+    cy.log('username is ', username);
+    cy.generateToken(username, password).then((res) => {
+        let token = res.body.token;
+        cy.request({
+            method: 'GET',
+            url: 'https://rtmws-a095aea7bc3e.herokuapp.com/api/users/isfirstlogin',
+            headers: {
+                'Content-Type': 'application/json',
+                'authorization' : `Bearer ${token}`
+            }
+        }).then((firstLoginRes) => {
+            cy.log(firstLoginRes.body);
+            expect(firstLoginRes.body).to.equal(true);
+        }).then(() => {
+            cy.log('end of test');
+        });
+    });
 })
-
-
-
-    })
+    });
