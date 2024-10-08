@@ -23,9 +23,10 @@
 //
 
 Cypress.Commands.add('generateToken', (username, password) => {
+    const endpoint = '/api/users/login';
     return cy.request({
         method: 'POST',
-        url: 'https://rtmws-a095aea7bc3e.herokuapp.com/api/users/login', // Corrected the URL
+        url: (`${Cypress.env('BASE_URL')}${endpoint}`), // Corrected the URL
         body: {
             username: username,
             password: password,

@@ -9,9 +9,10 @@ it('tests first login validation', ()=>{
     cy.log('username is ', username);
     cy.generateToken(username, password).then((res) => {
         let token = res.body.token;
+        const endpoint = '/api/users/isfirstlogin';
         cy.request({
             method: 'GET',
-            url: 'https://rtmws-a095aea7bc3e.herokuapp.com/api/users/isfirstlogin',
+            url: (`${Cypress.env('BASE_URL')}${endpoint}`),
             headers: {
                 'Content-Type': 'application/json',
                 'authorization' : `Bearer ${token}`
