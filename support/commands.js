@@ -34,3 +34,19 @@ Cypress.Commands.add('generateToken', (username, password) => {
     }).then(response => { return response });
 });
 
+Cypress.Commands.add('updateQuote', (quote) => { 
+    
+    const endpoint = '/api/booking/updatequote';
+    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQwLCJDb21wYW55SWQiOjEwNDAsImlhdCI6MTcyODUzMDkyNCwiZXhwIjoxNzI4NTQ1MzI0fQ.YHFilcjZT_jSzaVC5cfl1-3knP2gCSHkT1mXAE8JUW8'
+    cy.request({
+        url:(`${Cypress.env('BASE_URL')}${endpoint}`),
+        method: 'PATCH',
+        body: quote,
+        headers: {
+            'Content-Type': 'application/json',
+            'authorization': `Bearer ${token}`
+         },
+        failOnStatusCode: false
+      }).then(response => {return response })
+ })
+
