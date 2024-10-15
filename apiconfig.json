@@ -1,0 +1,7 @@
+{
+    "baseUrl": "https://rtmws-a095aea7bc3e.herokuapp.com",
+    "endpoints": {
+      "shipment": "/api/order/shipment/createshipment",
+      "login": "/api/users/login"
+    }
+  }

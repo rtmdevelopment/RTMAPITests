@@ -20,7 +20,9 @@
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
 //
-//
+///<reference types="cypress"/>
+/// <reference types="cypress-xpath"/>
+
 
 Cypress.Commands.add('generateToken', (username, password) => {
     const endpoint = '/api/users/login';
