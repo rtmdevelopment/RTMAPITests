@@ -20,8 +20,8 @@
 // -- This is a dual command --
 // Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
 //
-///<reference types="cypress"/>
-/// <reference types="cypress-xpath"/>
+///<reference types="Cypress"/>
+/// 
 
 
 Cypress.Commands.add('generateToken', (username, password) => {
