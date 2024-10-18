@@ -30,10 +30,11 @@ function registerMachine(payload, access_token) {
       body: payload,
       failOnStatusCode: false, 
     }).then((response) => {
-        return{
-         response:response,
-      machineId:response.body.token, 
-      }
+        return response;
+
+         /* response:response,
+      machineId:response.body.results[0].id,  */
+      
     });
   }
 
@@ -47,12 +48,12 @@ function registerMachine(payload, access_token) {
       body: payload,
       failOnStatusCode: false, 
     }).then((response) => {
-      return {
+      return response;
 
-      response:response,
+      /* response:response,
       quote_Id:response.body.result.quote_id
 
-      }
+      } */
     });
   }
 
