@@ -9,6 +9,14 @@
       "updateQuote": "/api/booking/updatequote",
       "quoteById" : "/api/booking/getquoteinfo",
       "getAllQuotes" : "/api/booking/getallquotes",
-      "getAllBooking" : "/api/booking/getAllBooking"
+      "getAllBooking" : "/api/booking/getAllBooking",
+      "FirstSampleReport" : "/api/order/createfirstsamplereport",
+      "updateFirstSampleReport" : "/api/order/updatefirstsamplereport",
+      "FinalReport" : "/api/order/createfinalreport",
+      "updateFinalReport" : "/api/order/updatefinalreport"
+
+
+
+
     }
   }

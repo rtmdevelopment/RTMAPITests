@@ -1,7 +1,7 @@
 const shipmenPayload = {
     "orderid": 24,
     "goods_status": "goods_in_transit",
-    "shipment_datetime" : "2024-09-22 09:00:00",
+    "shipment_datetime" : "2024-10-22 09:00:00",
     "invoice": "https://b2url/tools.pdf",
     "shipment_details": [
         {
@@ -25,9 +25,10 @@ const shipUpdatePayload = {
             "typeofgoods": "raw_material",
             "shipmentid": 73,
             "received_status": "received_in_full",
-            "received_quantity": 25
+            "received_quantity": 24
             
-        }
+        },
+        
     ]
 }
   

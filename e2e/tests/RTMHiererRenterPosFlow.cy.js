@@ -1,11 +1,14 @@
 /// <reference types ="Cypress" />
 
-const { login, createShipment, registerMachine, saveQuote, updateQuote, getQuotebyId ,updateShipment} =
+const { login, createShipment, registerMachine, saveQuote, updateQuote, getQuotebyId ,updateShipment,createFirstSampleReport,
+
+} =
   require('../../support/utils/apiutils.js');
 
 import shipment, { shipmenPayload, shipUpdatePayload } from '../../fixtures/Shipment';
 import { registerMachinePayload, saveQuotePayload, updateQuotePayload } from '../../fixtures/BookMachine';
 import db from '../../support/utils/dbUtils.js';
+import { createFirstSampleReportPayload, updateFirstSampleReportPayload } from '../../fixtures/SampleFinalReport.js';
 /* import updateQuote from '../../fixtures/UpdateQuote.js'; */
 const HiererLogin = require('../../fixtures/HiererLogin.json');
 const RenterLogin = require('../../fixtures/RenterLogin.json');
@@ -97,6 +100,7 @@ describe('Hierer Renter postive flow', () => {
         const accessToken = result.token; // Access the access_token
 
         const payload = shipmenPayload
+      
         payload.orderid = orderId
         cy.log('Order Id is passed', orderId)
         createShipment(payload, accessToken).then((response) => {
@@ -128,6 +132,53 @@ describe('Hierer Renter postive flow', () => {
 
           expect(response.status).to.eq(200);
           
+
+        });
+      })
+
+
+
+  })
+
+  it('Validates Renter creates First sample Repot to Hirer ', () => {
+    cy.log('Current Shipment Id before check:', orderId);
+    /*  cy.wrap(orderId).should('not.be.empty'); */
+    login(`${RenterLogin.username}`, `${RenterLogin.password}`)
+      .then((result) => {
+        const accessToken = result.token; // Access the access_token
+
+       const payload = createFirstSampleReportPayload
+       payload.orderid=orderId
+       
+        cy.log('Order Id is passed', orderId)
+        createFirstSampleReport(payload, accessToken).then((response) => {
+
+          expect(response.status).to.eq(200);
+          
+
+        });
+      })
+
+
+
+  })
+
+  t('Validates Hirer Approves FirstSampleReport ', () => {
+    cy.log('Current Order Id before check:', orderId);
+    /*  cy.wrap(orderId).should('not.be.empty'); */
+    login(`${HiererLogin.username}`, `${HiererLogin.password}`)
+      .then((result) => {
+        const accessToken = result.token; // Access the access_token
+
+        const payload = updateFirstSampleReportPayload
+      
+        payload.orderid = orderId
+        cy.log('Order Id is passed', orderId)
+        createShipment(payload, accessToken).then((response) => {
+
+          expect(response.status).to.eq(200);
+          /* firstSampleDispositionStatus = response.body.result[0].first_sample_disposition;
+          cy.log('ShipmentId is', firstSampleDispositionStatus) */
 
         });
       })

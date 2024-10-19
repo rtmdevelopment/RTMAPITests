@@ -145,7 +145,61 @@ function createShipment(payload, access_token) {
     });
   }
   
-  
+  function createFirstSampleReport(payload, access_token) {
+    return cy.request({
+      method: 'POST',
+      url: `${apiconfig.baseUrl}${apiconfig.endpoints.FirstSampleReport}`,
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+      body: payload,
+      failOnStatusCode: false, 
+    }).then((response) => {
+      return response; 
+    });
+  }
+  function updateFirstSampleReport(payload, access_token) {
+    return cy.request({
+      method: 'PATCH',
+      url: `${apiconfig.baseUrl}${apiconfig.endpoints.updateFirstSampleReport}`,
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+      body: payload,
+      failOnStatusCode: false, 
+    }).then((response) => {
+      return response; 
+    });
+  }
+
+  function createFinalReport(payload, access_token) {
+    return cy.request({
+      method: 'POST',
+      url: `${apiconfig.baseUrl}${apiconfig.endpoints.FinalReport}`,
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+      body: payload,
+      failOnStatusCode: false, 
+    }).then((response) => {
+      return response; 
+    });
+  }
+
+  function updateFinalReport(payload, access_token) {
+    return cy.request({
+      method: 'PATCH',
+      url: `${apiconfig.baseUrl}${apiconfig.endpoints.updateFinalReport}`,
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+      body: payload,
+      failOnStatusCode: false, 
+    }).then((response) => {
+      return response; 
+    });
+  }
+
   module.exports = {
     login,
     createShipment,
@@ -155,6 +209,10 @@ function createShipment(payload, access_token) {
     updateQuote,
     getQuotebyId,
     getAllQuotes,
-    getAllBooking
+    getAllBooking,
+    createFirstSampleReport,
+    updateFirstSampleReport,
+    createFinalReport,
+    updateFinalReport
   };
   
