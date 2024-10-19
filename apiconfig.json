@@ -2,9 +2,13 @@
     "baseUrl": "https://rtmws-a095aea7bc3e.herokuapp.com",
     "endpoints": {
       "shipment": "/api/order/shipment/createshipment",
+      "shipmentUpdate": "/api/order/shipment/updateshipment",
       "login": "/api/users/login",
       "regMachine": "/api/machines/registerMachine",
       "saveQuote": "/api/booking/savequote",
-      "quoteById" : "/api/booking/getquoteinfo"
+      "updateQuote": "/api/booking/updatequote",
+      "quoteById" : "/api/booking/getquoteinfo",
+      "getAllQuotes" : "/api/booking/getallquotes",
+      "getAllBooking" : "/api/booking/getAllBooking"
     }
   }

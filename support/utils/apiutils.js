@@ -57,6 +57,25 @@ function registerMachine(payload, access_token) {
     });
   }
 
+  function updateQuote(payload, access_token) {
+    return cy.request({
+      method: 'PATCH',
+      url: `${apiconfig.baseUrl}${apiconfig.endpoints.updateQuote}`,
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+      body: payload,
+      failOnStatusCode: false, 
+    }).then((response) => {
+      return response;
+
+      /* response:response,
+      quote_Id:response.body.result.quote_id
+
+      } */
+    });
+  }
+
   function getQuotebyId(accessToken)
 {
     return  cy.request({
@@ -71,6 +90,33 @@ function registerMachine(payload, access_token) {
       })
 }
 
+function getAllQuotes(accessToken)
+{
+    return  cy.request({
+        method: 'GET',
+        url: `${apiconfig.baseUrl}${apiconfig.endpoints.getAllQuotes}`,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        failOnStatusCode: false, 
+      }).then((response) => {
+        return response;
+      })
+}
+
+function getAllBooking(accessToken)
+{
+    return  cy.request({
+        method: 'GET',
+        url: `${apiconfig.baseUrl}${apiconfig.endpoints.getAllBooking}`,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        failOnStatusCode: false, 
+      }).then((response) => {
+        return response;
+      })
+}
 function createShipment(payload, access_token) {
     return cy.request({
       method: 'POST',
@@ -85,13 +131,30 @@ function createShipment(payload, access_token) {
     });
   }
   
+  function updateShipment(payload, access_token) {
+    return cy.request({
+      method: 'PATCH',
+      url: `${apiconfig.baseUrl}${apiconfig.endpoints.shipmentUpdate}`,
+      headers: {
+        Authorization: `Bearer ${access_token}`,
+      },
+      body: payload,
+      failOnStatusCode: false, 
+    }).then((response) => {
+      return response; 
+    });
+  }
   
   
   module.exports = {
     login,
     createShipment,
+    updateShipment,
     registerMachine,
     saveQuote,
-    getQuotebyId
+    updateQuote,
+    getQuotebyId,
+    getAllQuotes,
+    getAllBooking
   };
   
