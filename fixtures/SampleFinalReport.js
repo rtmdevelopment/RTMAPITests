@@ -7,7 +7,7 @@ const createFirstSampleReportPayload ={
     "uom": "pieces",
     "first_sample_disposition": "pending_approval",
     "first_sample_inspection_report" : "https://b2url/newdb.pdf"
-},
+}
 
 
 

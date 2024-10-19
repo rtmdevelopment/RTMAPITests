@@ -1,7 +1,7 @@
 /// <reference types ="Cypress" />
 
 const { login, createShipment, registerMachine, saveQuote, updateQuote, getQuotebyId ,updateShipment,createFirstSampleReport,
-
+  updateFirstSampleReport
 } =
   require('../../support/utils/apiutils.js');
 
@@ -163,7 +163,7 @@ describe('Hierer Renter postive flow', () => {
 
   })
 
-  t('Validates Hirer Approves FirstSampleReport ', () => {
+  it('Validates Hirer Approves FirstSampleReport ', () => {
     cy.log('Current Order Id before check:', orderId);
     /*  cy.wrap(orderId).should('not.be.empty'); */
     login(`${HiererLogin.username}`, `${HiererLogin.password}`)
@@ -174,7 +174,7 @@ describe('Hierer Renter postive flow', () => {
       
         payload.orderid = orderId
         cy.log('Order Id is passed', orderId)
-        createShipment(payload, accessToken).then((response) => {
+        updateFirstSampleReport(payload, accessToken).then((response) => {
 
           expect(response.status).to.eq(200);
           /* firstSampleDispositionStatus = response.body.result[0].first_sample_disposition;
