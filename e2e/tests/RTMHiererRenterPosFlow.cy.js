@@ -1,14 +1,14 @@
 /// <reference types ="Cypress" />
 
 const { login, createShipment, registerMachine, saveQuote, updateQuote, getQuotebyId ,updateShipment,createFirstSampleReport,
-  updateFirstSampleReport
+  updateFirstSampleReport,createFinalReport,updateFinalReport
 } =
   require('../../support/utils/apiutils.js');
 
 import shipment, { shipmenPayload, shipUpdatePayload } from '../../fixtures/Shipment';
 import { registerMachinePayload, saveQuotePayload, updateQuotePayload } from '../../fixtures/BookMachine';
 import db from '../../support/utils/dbUtils.js';
-import { createFirstSampleReportPayload, updateFirstSampleReportPayload } from '../../fixtures/SampleFinalReport.js';
+import { createFirstSampleReportPayload, updateFirstSampleReportPayload,createFinalReportPayload,updateFinalReportPayload } from '../../fixtures/SampleFinalReport.js';
 /* import updateQuote from '../../fixtures/UpdateQuote.js'; */
 const HiererLogin = require('../../fixtures/HiererLogin.json');
 const RenterLogin = require('../../fixtures/RenterLogin.json');
@@ -124,8 +124,8 @@ describe('Hierer Renter postive flow', () => {
 
        const payload = shipUpdatePayload
        payload.orderid=orderId
-       payload.shipmentid= shipmentId
-       cy.log(payload.received_status)
+       payload.shipment_details[0].shipmentid= shipmentId
+       cy.log(payload.shipment_details[0].received_status)
        
         cy.log('Shipment Id is passed', shipmentId)
         updateShipment(payload, accessToken).then((response) => {
@@ -175,6 +175,53 @@ describe('Hierer Renter postive flow', () => {
         payload.orderid = orderId
         cy.log('Order Id is passed', orderId)
         updateFirstSampleReport(payload, accessToken).then((response) => {
+
+          expect(response.status).to.eq(200);
+          /* firstSampleDispositionStatus = response.body.result[0].first_sample_disposition;
+          cy.log('ShipmentId is', firstSampleDispositionStatus) */
+
+        });
+      })
+
+
+
+  })
+
+  it('Validates Renter send Final Report ', () => {
+    cy.log('Current Order Id before check:', orderId);
+    /*  cy.wrap(orderId).should('not.be.empty'); */
+    login(`${RenterLogin.username}`, `${RenterLogin.password}`)
+      .then((result) => {
+        const accessToken = result.token; // Access the access_token
+
+        const payload = createFinalReportPayload
+      
+        payload.orderid = orderId
+        cy.log('Order Id is passed', orderId)
+        createFinalReport(payload, accessToken).then((response) => {
+
+          expect(response.status).to.eq(200);
+          /* firstSampleDispositionStatus = response.body.result[0].first_sample_disposition;
+          cy.log('ShipmentId is', firstSampleDispositionStatus) */
+
+        });
+      })
+
+
+
+  })
+  it('Validates Hirer Approves Final Report ', () => {
+    cy.log('Current Order Id before check:', orderId);
+    /*  cy.wrap(orderId).should('not.be.empty'); */
+    login(`${HiererLogin.username}`, `${HiererLogin.password}`)
+      .then((result) => {
+        const accessToken = result.token; // Access the access_token
+
+        const payload = updateFinalReportPayload
+      
+        payload.orderid = orderId
+        cy.log('Order Id is passed', orderId)
+        updateFinalReport(payload, accessToken).then((response) => {
 
           expect(response.status).to.eq(200);
           /* firstSampleDispositionStatus = response.body.result[0].first_sample_disposition;

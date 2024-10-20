@@ -10,11 +10,11 @@ const shipmenPayload = {
             "description": "testAPICypress",
             "uom": "pieces",
             "image": "https://b2url/rawinvoice.pdf"
-        },
+        }/* ,
         {
             "typeofgoods": "invoice",
             "invoice": "https://f005.backblazeb2.com/file/rtmfiles/file-sample_150kB.pdf"
-        }
+        } */
     ]
 }
 
