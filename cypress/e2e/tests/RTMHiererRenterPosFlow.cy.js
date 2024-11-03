@@ -7,7 +7,7 @@ const { login, createShipment, registerMachine, saveQuote, updateQuote, getQuote
 
 import shipment, { shipmenPayload, shipUpdatePayload } from '../../fixtures/Shipment';
 import { registerMachinePayload, saveQuotePayload, updateQuotePayload } from '../../fixtures/BookMachine';
-import db from '../../support/utils/dbUtils.js';
+/* import db from '../../support/utils/db.js'; */
 import { createFirstSampleReportPayload, updateFirstSampleReportPayload,createFinalReportPayload,updateFinalReportPayload } from '../../fixtures/SampleFinalReport.js';
 /* import updateQuote from '../../fixtures/UpdateQuote.js'; */
 const HiererLogin = require('../../fixtures/HiererLogin.json');
@@ -224,6 +224,17 @@ describe('Hierer Renter postive flow', () => {
         updateFinalReport(payload, accessToken).then((response) => {
 
           expect(response.status).to.eq(200);
+          
+            cy.task('queryDb', { query: `SELECT * FROM RTM.final_report where order_id = ${orderId}` }).then((results) => {
+              // Use the results in your tests
+              expect(results).to.have.length.greaterThan(0);
+              const report = results[0];
+              expect(report).to.have.property('order_id', orderId);
+              expect(report).to.have.property('final_product_disposition');
+              expect(report.final_product_disposition).to.equal("pending_approval");
+            });
+            // Add more assertions as needed
+          });
           /* firstSampleDispositionStatus = response.body.result[0].first_sample_disposition;
           cy.log('ShipmentId is', firstSampleDispositionStatus) */
 
@@ -234,4 +245,3 @@ describe('Hierer Renter postive flow', () => {
 
   })
 
-})
