@@ -1,4 +1,4 @@
-const mysql = require('mysql2');
+/* const mysql = require('mysql2');
 export async function dbConnection() {
     const connection = mysql.createConnection({
     host: 'rtm.cleeiyuc0o49.us-east-2.rds.amazonaws.com',
@@ -15,3 +15,4 @@ return new Promise((resolve, reject) => {
         resolve(connection);
     });
 });}
+ */

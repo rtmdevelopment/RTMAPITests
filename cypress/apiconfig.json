@@ -1,5 +1,6 @@
 {
-    "baseUrl": "https://rtmws-a095aea7bc3e.herokuapp.com",
+ 
+    "baseUrl": "http://127.0.0.1:5100",
     "endpoints": {
       "shipment": "/api/order/shipment/createshipment",
       "shipmentUpdate": "/api/order/shipment/updateshipment",
@@ -14,7 +15,7 @@
       "updateFirstSampleReport" : "/api/order/updatefirstsamplereport",
       "FinalReport" : "/api/order/createfinalreport",
       "updateFinalReport" : "/api/order/updatefinalreport"
-
+   
 
 
 
