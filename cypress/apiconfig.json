@@ -8,7 +8,7 @@
       "regMachine": "/api/machines/registerMachine",
       "saveQuote": "/api/booking/savequote",
       "updateQuote": "/api/booking/updatequote",
-      "quoteById" : "/api/booking/getquoteinfo",
+      "quoteById" : "/api/booking/getquoteinfo/",
       "getAllQuotes" : "/api/booking/getallquotes",
       "getAllBooking" : "/api/booking/getAllBooking",
       "FirstSampleReport" : "/api/order/createfirstsamplereport",

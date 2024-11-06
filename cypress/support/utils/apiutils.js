@@ -76,11 +76,11 @@ function registerMachine(payload, access_token) {
     });
   }
 
-  function getQuotebyId(accessToken)
+  function getQuotebyId(accessToken,quoteId)
 {
     return  cy.request({
         method: 'GET',
-        url: `${apiconfig.baseUrl}${apiconfig.endpoints.quoteById}${quote_Id}`,
+        url: `${apiconfig.baseUrl}${apiconfig.endpoints.quoteById}${quoteId}`,
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
