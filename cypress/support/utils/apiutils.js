@@ -61,6 +61,7 @@ function registerMachine(payload, access_token) {
     return cy.request({
       method: 'PATCH',
       url: `${apiconfig.baseUrl}${apiconfig.endpoints.updateQuote}`,
+      timeout: 30000, 
       headers: {
         Authorization: `Bearer ${access_token}`,
       },

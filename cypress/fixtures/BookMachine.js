@@ -29,8 +29,8 @@ const registerMachinePayload ={
 }
 
 
-const saveQuotePayload= {"plannedstartdatetime" : "2024-10-22 13:00:00",
-"plannedenddatetime": "2024-10-27 15:00:00",
+const saveQuotePayload= {"plannedstartdatetime" : "2024-11-22 13:00:00",
+"plannedenddatetime": "2024-11-27 15:00:00",
 "machineid": 5119,
 "quantity" : 25,
 "orderprocesssheet": "/rtmbuckets/quote/5001/process.pdf",
@@ -44,8 +44,8 @@ const saveQuotePayload= {"plannedstartdatetime" : "2024-10-22 13:00:00",
 
 const updateQuotePayload = {
     "quoteid": 2119,
-    "plannedstartdatetime" : "2024-10-22 13:00:00",
-"plannedenddatetime": "2024-10-27 15:00:00",
+    "plannedstartdatetime" : "2024-11-22 13:00:00",
+"plannedenddatetime": "2024-11-27 15:00:00",
     "machineid": 5220,
     "quotestatus" : "accepted",
     "orderprocesssheet": "/rtmbuckets/quote/5001/process.pdf",
