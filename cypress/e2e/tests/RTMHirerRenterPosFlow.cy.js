@@ -5,12 +5,12 @@ const { login, createShipment, registerMachine, saveQuote, updateQuote, getQuote
 } =
   require('../../support/utils/apiutils.js');
 
-import shipment, { shipmenPayload, shipUpdatePayload } from '../../fixtures/Shipment';
-import { registerMachinePayload, saveQuotePayload, updateQuotePayload } from '../../fixtures/BookMachine';
+import shipment, { shipmenPayload, shipUpdatePayload } from '../../fixtures/Shipment.js';
+import { registerMachinePayload, saveQuotePayload, updateQuotePayload } from '../../fixtures/BookMachine.js';
 /* import db from '../../support/utils/db.js'; */
 import { createFirstSampleReportPayload, updateFirstSampleReportPayload,createFinalReportPayload,updateFinalReportPayload } from '../../fixtures/SampleFinalReport.js';
 /* import updateQuote from '../../fixtures/UpdateQuote.js'; */
-const HiererLogin = require('../../fixtures/HiererLogin.json');
+const HirerLogin = require('../../fixtures/HirerLogin.json');
 const RenterLogin = require('../../fixtures/RenterLogin.json');
 
 
@@ -19,10 +19,13 @@ describe('Hierer Renter postive flow', () => {
   let quoteId;
   let orderId;
   let shipmentId;
+ 
 
   it('Validates Register a machine by Renter', () => {
     login(`${RenterLogin.username}`, `${RenterLogin.password}`)
       .then((result) => {
+          
+       
         const accessToken = result.token; // Access the access_token
         const payload = registerMachinePayload
         registerMachine(payload, accessToken).then((response) => {
@@ -30,6 +33,7 @@ describe('Hierer Renter postive flow', () => {
           expect(response.status).to.eq(201);
           machineId = response.body.results[0].id;
           cy.log('Machine Id is', machineId)
+          
 
         });
       })
@@ -40,7 +44,7 @@ describe('Hierer Renter postive flow', () => {
   it('Validates Hire a machine ', () => {
     cy.log('Current Machine Id before check:', machineId);
     /*  cy.wrap(machineId).should('not.be.empty'); */
-    login(`${HiererLogin.username}`, `${HiererLogin.password}`)
+    login(`${HirerLogin.username}`, `${HirerLogin.password}`)
       .then((result) => {
         const accessToken = result.token; // Access the access_token
 
@@ -95,7 +99,7 @@ describe('Hierer Renter postive flow', () => {
   it('Validates Hirer Ship Materials to Renter ', () => {
     cy.log('Current Order Id before check:', orderId);
     /*  cy.wrap(orderId).should('not.be.empty'); */
-    login(`${HiererLogin.username}`, `${HiererLogin.password}`)
+    login(`${HirerLogin.username}`, `${HirerLogin.password}`)
       .then((result) => {
         const accessToken = result.token; // Access the access_token
 
@@ -166,7 +170,7 @@ describe('Hierer Renter postive flow', () => {
   it('Validates Hirer Approves FirstSampleReport ', () => {
     cy.log('Current Order Id before check:', orderId);
     /*  cy.wrap(orderId).should('not.be.empty'); */
-    login(`${HiererLogin.username}`, `${HiererLogin.password}`)
+    login(`${HirerLogin.username}`, `${HirerLogin.password}`)
       .then((result) => {
         const accessToken = result.token; // Access the access_token
 
@@ -213,7 +217,7 @@ describe('Hierer Renter postive flow', () => {
   it('Validates Hirer Approves Final Report ', () => {
     cy.log('Current Order Id before check:', orderId);
     /*  cy.wrap(orderId).should('not.be.empty'); */
-    login(`${HiererLogin.username}`, `${HiererLogin.password}`)
+    login(`${HirerLogin.username}`, `${HirerLogin.password}`)
       .then((result) => {
         const accessToken = result.token; // Access the access_token
 

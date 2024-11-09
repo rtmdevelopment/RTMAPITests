@@ -5,7 +5,7 @@ const {  getQuotebyId,getAllQuotes,login,createShipment,registerMachine,saveQuot
   } =
     require('../../support/utils/apiutils.js');
     import { registerMachinePayload, saveQuotePayload, updateQuotePayload } from '../../fixtures/BookMachine';
-    const HiererLogin = require('../../fixtures/HiererLogin.json');
+    const HirerLogin = require('../../fixtures/HirerLogin.json');
 const RenterLogin = require('../../fixtures/RenterLogin.json');
 
 
@@ -26,7 +26,7 @@ describe('Verify GetQuote API calls', () => {
                 cy.log('Machine Id is', machineId);
           
                 // Hire a machine as Hirer
-                login(`${HiererLogin.username}`, `${HiererLogin.password}`).then((hireLoginResult) => {
+                login(`${HirerLogin.username}`, `${HirerLogin.password}`).then((hireLoginResult) => {
                   const hireAccessToken = hireLoginResult.token;
                   const hirePayload = saveQuotePayload;
                   hirePayload.machineid = machineId;

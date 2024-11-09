@@ -15,7 +15,8 @@ function login(username, password) {
     }).then((response) => {
         return {
             response: response, // Return the response and access_token
-            token: response.body.token, 
+            token: response.body.token,
+            userId: response.body.userData,
           };
     });
 }
@@ -118,6 +119,35 @@ function getAllBooking(accessToken)
         return response;
       })
 }
+
+function getAllOrders(accessToken)
+{
+    return  cy.request({
+        method: 'GET',
+        url: `${apiconfig.baseUrl}${apiconfig.endpoints.getAllOrder}`,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        failOnStatusCode: false, 
+      }).then((response) => {
+        return response;
+      })
+}
+
+function getShipmentById(accessToken,shipmentId)
+{
+    return  cy.request({
+        method: 'GET',
+        url: `${apiconfig.baseUrl}${apiconfig.endpoints.getShipmentId}${shipmentId}`,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        failOnStatusCode: false, 
+      }).then((response) => {
+        return response;
+      })
+}
+
 function createShipment(payload, access_token) {
     return cy.request({
       method: 'POST',
@@ -211,6 +241,8 @@ function createShipment(payload, access_token) {
     getQuotebyId,
     getAllQuotes,
     getAllBooking,
+    getAllOrders,
+    getShipmentById,
     createFirstSampleReport,
     updateFirstSampleReport,
     createFinalReport,

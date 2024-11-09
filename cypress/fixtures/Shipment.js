@@ -1,7 +1,7 @@
 const shipmenPayload = {
     "orderid": 24,
     "goods_status": "goods_in_transit",
-    "shipment_datetime" : "2024-10-22 09:00:00",
+    "shipment_datetime" : "2024-11-22T09:00:00.000Z",
     "invoice": "https://b2url/tools.pdf",
     "shipment_details": [
         {

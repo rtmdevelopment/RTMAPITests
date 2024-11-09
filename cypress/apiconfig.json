@@ -14,7 +14,9 @@
       "FirstSampleReport" : "/api/order/createfirstsamplereport",
       "updateFirstSampleReport" : "/api/order/updatefirstsamplereport",
       "FinalReport" : "/api/order/createfinalreport",
-      "updateFinalReport" : "/api/order/updatefinalreport"
+      "updateFinalReport" : "/api/order/updatefinalreport",
+      "getAllOrder" : "/api/order/getAllOrders",
+      "getShipmentId": "/api/order/shipment/getshipmentinfo/"
    
 
 
