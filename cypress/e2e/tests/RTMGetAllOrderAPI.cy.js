@@ -66,6 +66,7 @@ describe('Verify GetAllOrders', () => {
 
                         // Validate quote ID, machine ID, and booking ID
                         expect(apiRecord.quote_id).to.equal(dbRecord.quote_id, `Quote ID Match for order ${dbRecord.order_id}`);
+                         // Validate machine ID, and booking ID
                         expect(apiRecord.machine_id).to.equal(dbRecord.machine_id, `Machine ID Match for order ${dbRecord.order_id}`);
                         expect(apiRecord.booking_id).to.equal(dbRecord.booking_id, `Booking ID Match for order ${dbRecord.order_id}`);
                     });
