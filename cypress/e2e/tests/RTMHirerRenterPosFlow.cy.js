@@ -190,11 +190,10 @@ describe('Hierer Renter postive flow', () => {
 
 
   })
-
   it('Validates Renter send Final Report ', () => {
     cy.log('Current Order Id before check:', orderId);
     /*  cy.wrap(orderId).should('not.be.empty'); */
-    login(`${RenterLogin.username}`, `${RenterLogin.password}`)
+    login(`${RenterLogin.username}`, `${RenterLogin.passwords}`)
       .then((result) => {
         const accessToken = result.token; // Access the access_token
 
@@ -217,7 +216,7 @@ describe('Hierer Renter postive flow', () => {
   it('Validates Hirer Approves Final Report ', () => {
     cy.log('Current Order Id before check:', orderId);
     /*  cy.wrap(orderId).should('not.be.empty'); */
-    login(`${HirerLogin.username}`, `${HirerLogin.password}`)
+    login(`${HirerLogin.username}`, `${HirerLogin.passwords}`)
       .then((result) => {
         const accessToken = result.token; // Access the access_token
 
@@ -244,6 +243,7 @@ describe('Hierer Renter postive flow', () => {
 
         });
       })
+ 
 
 
 

@@ -16,7 +16,8 @@
       "FinalReport" : "/api/order/createfinalreport",
       "updateFinalReport" : "/api/order/updatefinalreport",
       "getAllOrder" : "/api/order/getAllOrders",
-      "getShipmentId": "/api/order/shipment/getshipmentinfo/"
+      "getShipmentId": "/api/order/shipment/getshipmentinfo/",
+       "getShipmentByOrderId": "/api/order/shipment/getshipmentbyorderid/"
    
 
 

@@ -147,6 +147,19 @@ function getShipmentById(accessToken,shipmentId)
         return response;
       })
 }
+function getShipmentByOrderId(accessToken,orderID)
+{
+    return  cy.request({
+        method: 'GET',
+        url: `${apiconfig.baseUrl}${apiconfig.endpoints.getShipmentByOrderId}${orderID}`,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        failOnStatusCode: false, 
+      }).then((response) => {
+        return response;
+      })
+}
 
 function createShipment(payload, access_token) {
     return cy.request({
@@ -239,6 +252,7 @@ function createShipment(payload, access_token) {
     saveQuote,
     updateQuote,
     getQuotebyId,
+    getShipmentByOrderId,
     getAllQuotes,
     getAllBooking,
     getAllOrders,
