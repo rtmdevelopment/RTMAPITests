@@ -105,11 +105,58 @@ const fetchQuoteByIdDB = (quoteId) =>{
 
     })
 }
+const fetchSampleReportIdDB = () => {
+    return cy.task('queryDb', {
+        query: `SELECT * FROM first_sample_report ORDER BY createdAt DESC LIMIT 1;`
+    }).then((response) => {
+        //  response is an array and we want the first (most recent) record
+        const topRecord = response[0];  // Get the first record
+        const orderID = topRecord.order_id;  // Extract order_id
+       const sampleId =topRecord.id
+        // Return an object with both values for further use
+        return { orderID ,sampleId};
+    });
+};
+const fetchSampleReportByOrderDB = (orderID) => {
+
+    return cy.task('queryDb',{
+    
+        
+        query: `SELECT * FROM first_sample_report where order_id =${orderID}`
+    
+    
+    })
+    }
+    const fetchFinalReportIdDB = () => {
+        return cy.task('queryDb', {
+            query: `SELECT * FROM final_report ORDER BY createdAt DESC LIMIT 1;`
+        }).then((response) => {
+            //  response is an array and we want the first (most recent) record
+            const topRecord = response[0];  // Get the first record
+            const orderID = topRecord.order_id;  // Extract order_id
+           const finalId =topRecord.id
+            // Return an object with both values for further use
+            return { orderID ,finalId};
+        });
+    };
+
+    const fetchFinalReportByOrderDB = (orderID) => {
+
+        return cy.task('queryDb',{
+        
+            
+            query: `SELECT * FROM final_report where order_id =${orderID}`
+        
+        
+        })
+        }
 
 module.exports ={
 
     getOrderDB,
     fetchQuoteIdDB,
     fetchCompanyEmailDB,
-    fetchQuoteByIdDB,getAllQuoteDB,fetchShipmentIdDB,fetchOrderCompanyIdDB,fetchShipmentByIdDB,getAllShipmentByOrderDB
+    fetchQuoteByIdDB,getAllQuoteDB,fetchShipmentIdDB,fetchOrderCompanyIdDB,fetchShipmentByIdDB,
+    getAllShipmentByOrderDB,fetchSampleReportIdDB,fetchSampleReportByOrderDB,fetchFinalReportIdDB,
+    fetchFinalReportByOrderDB
 };

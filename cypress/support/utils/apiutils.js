@@ -161,6 +161,32 @@ function getShipmentByOrderId(accessToken,orderID)
       })
 }
 
+function getFirstSampleReportByOrderId(accessToken,orderID)
+{
+    return  cy.request({
+        method: 'GET',
+        url: `${apiconfig.baseUrl}${apiconfig.endpoints.getFirstSampleByOrderId}${orderID}`,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        failOnStatusCode: false, 
+      }).then((response) => {
+        return response;
+      })
+}
+function getFinalReportByOrderId(accessToken,orderID)
+{
+    return  cy.request({
+        method: 'GET',
+        url: `${apiconfig.baseUrl}${apiconfig.endpoints.getFinalReportByOrderId}${orderID}`,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        failOnStatusCode: false, 
+      }).then((response) => {
+        return response;
+      })
+}
 function createShipment(payload, access_token) {
     return cy.request({
       method: 'POST',
@@ -256,6 +282,8 @@ function createShipment(payload, access_token) {
     getAllQuotes,
     getAllBooking,
     getAllOrders,
+    getFirstSampleReportByOrderId,
+    getFinalReportByOrderId,
     getShipmentById,
     createFirstSampleReport,
     updateFirstSampleReport,

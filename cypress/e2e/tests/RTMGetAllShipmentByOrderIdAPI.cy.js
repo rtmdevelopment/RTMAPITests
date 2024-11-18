@@ -46,6 +46,7 @@ fetchCompanyEmailDB(userId).then((response) => {
                 const apiResponse = shipmentResponse.body.result;
                 
                 cy.log('shipemntID DB is',shipmentId);
+                
                 fetchShipmentByIdDB(shipmentId).then((dbResult) => {
 
                     expect(dbResult).to.have.length.greaterThan(0);

@@ -263,7 +263,102 @@ const verifyQuoteByIdDetails = (apiResponse, dbRecord) => {
                     });
                 };
         
-        
+                
+
+                const verifySampleReportByIdDetails = (apiSReportDetailsArray, dbResults, sortKey='id') => {
+                    const sortedApiOrders = sortByFieldDesc(apiSReportDetailsArray, sortKey);
+                    const sortedDbResults = sortByFieldDesc(dbResults, sortKey);
+                    // Loop through each order from the DB and API response and compare fields
+                    sortedDbResults.forEach((dbResponse, index) => {
+                        const apiResponse = sortedApiOrders[index];
+                
+                        expect(apiResponse.UOM).to.equal(dbResponse.UOM, `UOM Matched: ${dbResponse.UOM}`);
+
+                       /*  // Validate Created At
+                        expect(apiResponse.createdAt).to.equal(dbResponse.createdAt, `Created At Matched: ${dbResponse.createdAt}`); */
+                    
+                        // Validate First Sample Disposition
+                        expect(apiResponse.first_sample_disposition).to.equal(dbResponse.first_sample_disposition, `First Sample Disposition Matched: ${dbResponse.first_sample_disposition}`);
+                    
+                        // Validate First Sample Inspection Report
+                        expect(apiResponse.first_sample_inspection_report).to.equal(dbResponse.first_sample_inspection_report, `First Sample Inspection Report Matched: ${dbResponse.first_sample_inspection_report}`);
+                    
+                        // Validate First Sample Quantity
+                        expect(apiResponse.first_sample_quantity).to.equal(dbResponse.first_sample_quantity, `First Sample Quantity Matched: ${dbResponse.first_sample_quantity}`);
+                    
+                        // Validate First Sample Remarks
+                        expect(apiResponse.first_sample_remarks).to.equal(dbResponse.first_sample_remarks, `First Sample Remarks Matched: ${dbResponse.first_sample_remarks}`);
+                    
+                        // Validate ID
+                        expect(apiResponse.id).to.equal(dbResponse.id, `ID Matched: ${dbResponse.id}`);
+                    
+                        // Validate Inspection Date Time
+                       /*  expect(apiResponse.inspection_date_time).to.equal(dbResponse.inspection_date_time, `Inspection Date Time Matched: ${dbResponse.inspection_date_time}`); */
+                    
+                        // Validate Order ID
+                        expect(apiResponse.order_id).to.equal(dbResponse.order_id, `Order ID Matched: ${dbResponse.order_id}`);
+                    
+                        // Validate Part Name
+                        expect(apiResponse.part_name).to.equal(dbResponse.part_name, `Part Name Matched: ${dbResponse.part_name}`);
+                    
+                        // Validate Part Number
+                        expect(apiResponse.part_number).to.equal(dbResponse.part_number, `Part Number Matched: ${dbResponse.part_number}`);
+                    
+                        // Validate Updated At
+                       /*  expect(apiResponse.updatedAt).to.equal(dbResponse.updatedAt, `Updated At Matched: ${dbResponse.updatedAt}`); */
+                    
+                    });
+                };
+
+                const verifyFinalReportByIdDetails = (apiSReportDetailsArray, dbResults, sortKey='id') => {
+                    const sortedApiOrders = sortByFieldDesc(apiSReportDetailsArray, sortKey);
+                    const sortedDbResults = sortByFieldDesc(dbResults, sortKey);
+                    // Loop through each order from the DB and API response and compare fields
+                    sortedDbResults.forEach((dbResponse, index) => {
+                        const apiResponse = sortedApiOrders[index];
+                
+                        expect(apiResponse.UOM).to.equal(dbResponse.UOM, `UOM Matched: ${dbResponse.UOM}`);
+
+                       /*  // Validate Created At
+                        expect(apiResponse.createdAt).to.equal(dbResponse.createdAt, `Created At Matched: ${dbResponse.createdAt}`); */
+                    
+                        // Validate Final Product Disposition
+                        expect(apiResponse.final_product_disposition).to.equal(dbResponse.final_product_disposition, `Final Product Disposition Matched: ${dbResponse.final_product_disposition}`);
+                    
+                        // Validate Final  Inspection Report
+                        expect(apiResponse.final_inspection_report).to.equal(dbResponse.final_inspection_report, `Final  Inspection Report Matched: ${dbResponse.final_inspection_report}`);
+                    
+                        // Validate Final Approved Quantity
+                        expect(apiResponse.final_product_approved_quantity).to.equal(dbResponse.final_product_approved_quantity, `Final Approved Quantity Matched: ${dbResponse.final_product_approved_quantity}`);
+                    
+                        // Validate Final Completion Remarks
+                        expect(apiResponse.final_completion_remarks).to.equal(dbResponse.final_completion_remarks, `Final Completion Remarks Matched: ${dbResponse.final_completion_remarks}`);
+                    
+                        // Validate Final Report ID
+                        expect(apiResponse.id).to.equal(dbResponse.id, `Final Report ID Matched: ${dbResponse.id}`);
+                    
+                        // Validate Completion Date Time
+                       /*  expect(apiResponse.final_completion_date_time).to.equal(dbResponse.final_completion_date_time, `Inspection Date Time Matched: ${dbResponse.final_completion_date_time}`); */
+                    
+                       // Validate Final Goods Pickup Date Time
+                       /*  expect(apiResponse.final_goods_planned_pickup_date_time).to.equal(dbResponse.final_goods_planned_pickup_date_time, `Inspection Date Time Matched: ${dbResponse.final_goods_planned_pickup_date_time}`); */
+                    
+                        // Validate Order ID
+                        expect(apiResponse.order_id).to.equal(dbResponse.order_id, `Final Report Order ID Matched: ${dbResponse.order_id}`);
+                    
+                        // Validate Part Name
+                        expect(apiResponse.part_name).to.equal(dbResponse.part_name, `Part Name Matched: ${dbResponse.part_name}`);
+                    
+                        // Validate Part Number
+                        expect(apiResponse.part_number).to.equal(dbResponse.part_number, `Part Number Matched: ${dbResponse.part_number}`);
+                    
+                        // Validate Updated At
+                       /*  expect(apiResponse.updatedAt).to.equal(dbResponse.updatedAt, `Updated At Matched: ${dbResponse.updatedAt}`); */
+                    
+                    });
+                };
+
 
 // Export the function so it can be used in test files
-module.exports = { validateOrderDetails ,verifyQuoteByIdDetails,verifyAllQuoteDetails,verifyShipmentByIdDetails,validateShipmentDetails};
+module.exports = { validateOrderDetails ,verifyQuoteByIdDetails,verifyAllQuoteDetails,
+    verifyShipmentByIdDetails,validateShipmentDetails,verifySampleReportByIdDetails,verifyFinalReportByIdDetails};

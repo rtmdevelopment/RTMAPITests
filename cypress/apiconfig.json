@@ -17,7 +17,11 @@
       "updateFinalReport" : "/api/order/updatefinalreport",
       "getAllOrder" : "/api/order/getAllOrders",
       "getShipmentId": "/api/order/shipment/getshipmentinfo/",
-       "getShipmentByOrderId": "/api/order/shipment/getshipmentbyorderid/"
+       "getShipmentByOrderId": "/api/order/shipment/getshipmentbyorderid/",
+       "getFirstSampleByOrderId": "/api/order/getallfsreportsbyorderid/",
+       "getFinalReportByOrderId": "/api/order/getallfinalreportsbyorderid/"
+   
+   
    
 
 
