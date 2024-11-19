@@ -6,6 +6,7 @@
       "shipmentUpdate": "/api/order/shipment/updateshipment",
       "login": "/api/users/login",
       "regMachine": "/api/machines/registerMachine",
+      "companyById" : "/api/user/getcompanydetailsbyid?companyId=",
       "saveQuote": "/api/booking/savequote",
       "updateQuote": "/api/booking/updatequote",
       "quoteById" : "/api/booking/getquoteinfo/",

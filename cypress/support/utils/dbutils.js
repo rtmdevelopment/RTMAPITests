@@ -84,6 +84,20 @@ return { userEmail };
     })
 }
 
+const fetchCompanyDetailsDB = () =>{
+
+    return cy.task('queryDb',{
+
+        query:  `SELECT * FROM Company`
+
+    }).then((response)=>{
+
+return { response };
+
+
+    })
+}
+
 const fetchOrderCompanyIdDB = (orderID) =>{
 
     return cy.task('queryDb',{
@@ -158,5 +172,5 @@ module.exports ={
     fetchCompanyEmailDB,
     fetchQuoteByIdDB,getAllQuoteDB,fetchShipmentIdDB,fetchOrderCompanyIdDB,fetchShipmentByIdDB,
     getAllShipmentByOrderDB,fetchSampleReportIdDB,fetchSampleReportByOrderDB,fetchFinalReportIdDB,
-    fetchFinalReportByOrderDB
+    fetchFinalReportByOrderDB,fetchCompanyDetailsDB
 };
