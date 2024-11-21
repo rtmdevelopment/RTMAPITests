@@ -54,6 +54,19 @@ function registerMachine(payload, access_token) {
       })
 }
 
+function getMachineDetailsByCompanyId(accessToken)
+{
+    return  cy.request({
+        method: 'GET',
+        url: `${apiconfig.baseUrl}${apiconfig.endpoints.machineDeatilsById}`,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        failOnStatusCode: false, 
+      }).then((response) => {
+        return response;
+      })
+}
   function saveQuote(payload, access_token) {
     return cy.request({
       method: 'POST',
@@ -291,6 +304,7 @@ function createShipment(payload, access_token) {
     updateShipment,
     registerMachine,
     getCompanyById,
+    getMachineDetailsByCompanyId,
     saveQuote,
     updateQuote,
     getQuotebyId,

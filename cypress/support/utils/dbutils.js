@@ -98,6 +98,29 @@ return { response };
     })
 }
 
+
+/* const getMachineDetailsDB = (CompanyId) =>{
+
+    return cy.task('queryDb',{
+
+        query:  `select * from Machine_Info_Save where CompanyId =${CompanyId}`
+
+    })
+} */
+
+    const getMachineDetailsDB = (CompanyId) => {
+        return cy.task('queryDb', {
+          query: `SELECT * FROM Machine_Info_Save WHERE CompanyId = ${CompanyId}`,
+        }).then((response) => {
+          // Ensure Identical field is treated as integer or boolean
+          response.forEach((row) => {
+            row.Identical = row.Identical === 1 || row.Identical === '1'; // Convert to boolean
+          });
+      
+          return { response };
+        });
+      };
+      
 const fetchOrderCompanyIdDB = (orderID) =>{
 
     return cy.task('queryDb',{
@@ -169,7 +192,7 @@ module.exports ={
 
     getOrderDB,
     fetchQuoteIdDB,
-    fetchCompanyEmailDB,
+    fetchCompanyEmailDB,getMachineDetailsDB,
     fetchQuoteByIdDB,getAllQuoteDB,fetchShipmentIdDB,fetchOrderCompanyIdDB,fetchShipmentByIdDB,
     getAllShipmentByOrderDB,fetchSampleReportIdDB,fetchSampleReportByOrderDB,fetchFinalReportIdDB,
     fetchFinalReportByOrderDB,fetchCompanyDetailsDB

@@ -7,6 +7,7 @@
       "login": "/api/users/login",
       "regMachine": "/api/machines/registerMachine",
       "companyById" : "/api/user/getcompanydetailsbyid?companyId=",
+      "machineDeatilsById" : "/api/machines/getMachinesByCompanyId",
       "saveQuote": "/api/booking/savequote",
       "updateQuote": "/api/booking/updatequote",
       "quoteById" : "/api/booking/getquoteinfo/",

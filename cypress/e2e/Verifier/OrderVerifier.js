@@ -27,7 +27,7 @@ return 0;//equal a,b
     });
 };
 
-
+const assert =require('assert')
 
 
 /**
@@ -357,8 +357,41 @@ const verifyQuoteByIdDetails = (apiResponse, dbRecord) => {
                     
                     });
                 };
+                
 
+                const validateMachineDetails = (apiMachineDetailsArray, dbResults, sortKey = 'id') => {
+                    // Sort API and DB results by the specified key (e.g., 'id')
+                    const sortedApiMachines = sortByFieldDesc(apiMachineDetailsArray, sortKey);
+                    const sortedDbMachines = sortByFieldDesc(dbResults, sortKey);
+                  
+                    // Loop through each machine from the DB and API response and compare fields
+                    sortedDbMachines.forEach((dbMachine, index) => {
+                      const apiMachine = sortedApiMachines[index];
+                  
+                     // Check if the id matches
+expect(apiMachine.id).to.equal(dbMachine.id, `Machine IDs should match. API: ${apiMachine.id}, DB: ${dbMachine.id}`);
 
+// Compare simple fields
+expect(apiMachine.Category).to.equal(dbMachine.Category, `Same Values in Category. API: ${apiMachine.Category}, DB: ${dbMachine.Category}`);
+expect(apiMachine.Machine_Type).to.equal(dbMachine.Machine_Type, `Same Values in Machine_Type. API: ${apiMachine.Machine_Type}, DB: ${dbMachine.Machine_Type}`);
+expect(apiMachine.Brand).to.equal(dbMachine.Brand, `Same Values in Brand. API: ${apiMachine.Brand}, DB: ${dbMachine.Brand}`);
+expect(apiMachine.Model).to.equal(dbMachine.Model, `Same Values in Model. API: ${apiMachine.Model}, DB: ${dbMachine.Model}`);
+expect(apiMachine.Year_of_Purchase).to.equal(dbMachine.Year_of_Purchase, `Same Values in Year_of_Purchase. API: ${apiMachine.Year_of_Purchase}, DB: ${dbMachine.Year_of_Purchase}`);
+expect(apiMachine.Machine_Hour_Rate).to.equal(dbMachine.Machine_Hour_Rate, `Same Values in Machine_Hour_Rate. API: ${apiMachine.Machine_Hour_Rate}, DB: ${dbMachine.Machine_Hour_Rate}`);
+expect(apiMachine.Machine_Name).to.equal(dbMachine.Machine_Name, `Same Values in Machine_Name. API: ${apiMachine.Machine_Name}, DB: ${dbMachine.Machine_Name}`);
+expect(apiMachine.Comments).to.equal(dbMachine.Comments, `Same Values in Comments. API: ${apiMachine.Comments}, DB: ${dbMachine.Comments}`);
+expect(apiMachine.Identical).to.equal(dbMachine.Identical, `Same Values in Identical. API: ${apiMachine.Identical}, DB: ${dbMachine.Identical}`);
+expect(apiMachine.Machine_Photo).to.equal(dbMachine.Machine_Photo, `Same Values in Machine_Photo. API: ${apiMachine.Machine_Photo}, DB: ${dbMachine.Machine_Photo}`);
+expect(apiMachine.Score).to.equal(dbMachine.Score, `Same Values in Score. API: ${apiMachine.Score}, DB: ${dbMachine.Score}`);
+expect(apiMachine.CompanyId).to.equal(dbMachine.CompanyId, `Same Values in CompanyId. API: ${apiMachine.CompanyId}, DB: ${dbMachine.CompanyId}`);
+
+// Validate Variable Fields :get all the keys from variable fields
+Object.keys(apiMachine.Variable_fields).forEach((key) => {
+  expect(apiMachine.Variable_fields[key]).to.equal(dbMachine.Variable_fields[key], `Same Values in Variable Field: ${key}. API: ${apiMachine.Variable_fields[key]}, DB: ${dbMachine.Variable_fields[key]}`);
+});
+                      });
+                    }
+                    
 // Export the function so it can be used in test files
-module.exports = { validateOrderDetails ,verifyQuoteByIdDetails,verifyAllQuoteDetails,
+module.exports = { validateOrderDetails ,verifyQuoteByIdDetails,verifyAllQuoteDetails,validateMachineDetails,
     verifyShipmentByIdDetails,validateShipmentDetails,verifySampleReportByIdDetails,verifyFinalReportByIdDetails};
