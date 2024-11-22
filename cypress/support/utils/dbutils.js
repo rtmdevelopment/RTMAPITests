@@ -11,7 +11,41 @@ return cy.task('queryDb',{
 
 })
 }
+const searchMachineDetailsDB = (companyId,category,machineType) => {
 
+    return cy.task('queryDb',{
+    
+        
+        query: `SELECT 
+    m.Category, 
+    m.Machine_Type, 
+    m.Brand, 
+    m.Model, 
+    m.Machine_Name,
+    m.Machine_Hour_Rate, 
+    m.Variable_fields, 
+    m.Score, 
+    m.CompanyId, 
+    m.id, 
+    c.CompanyName, 
+    a.factoryPin, 
+    a.factoryLatitude, 
+    a.factoryLongitude, 
+    m.Machine_Photo
+FROM 
+    Machine_Info_Save m
+JOIN 
+    Company c ON m.CompanyId = c.id
+JOIN 
+    Company_Address a ON c.id = a.CompanyId
+WHERE 
+    m.Category = '${category}' 
+    AND m.Machine_Type = '${machineType}'
+    AND m.CompanyId !=${companyId};`
+    
+    
+    })
+    }
 const getAllQuoteDB = (CompanyId) => {
 
     return cy.task('queryDb',{
@@ -192,7 +226,7 @@ module.exports ={
 
     getOrderDB,
     fetchQuoteIdDB,
-    fetchCompanyEmailDB,getMachineDetailsDB,
+    fetchCompanyEmailDB,getMachineDetailsDB,searchMachineDetailsDB,
     fetchQuoteByIdDB,getAllQuoteDB,fetchShipmentIdDB,fetchOrderCompanyIdDB,fetchShipmentByIdDB,
     getAllShipmentByOrderDB,fetchSampleReportIdDB,fetchSampleReportByOrderDB,fetchFinalReportIdDB,
     fetchFinalReportByOrderDB,fetchCompanyDetailsDB

@@ -6,6 +6,8 @@
       "shipmentUpdate": "/api/order/shipment/updateshipment",
       "login": "/api/users/login",
       "regMachine": "/api/machines/registerMachine",
+     "getMachine": "/api/booking/searchMachines?",
+     "getMachineByPage": " /api/booking/searchMachines?",
       "companyById" : "/api/user/getcompanydetailsbyid?companyId=",
       "machineDeatilsById" : "/api/machines/getMachinesByCompanyId",
       "saveQuote": "/api/booking/savequote",

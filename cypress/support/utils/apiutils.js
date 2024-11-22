@@ -38,8 +38,32 @@ function registerMachine(payload, access_token) {
       
     });
   }
-
-
+  function getMachineDeatils(accessToken,category,machineType)
+  {
+      return  cy.request({
+          method: 'GET',
+          url: `${apiconfig.baseUrl}${apiconfig.endpoints.getMachine}category=${category}&machineType=${machineType}`,
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          failOnStatusCode: false, 
+        }).then((response) => {
+          return response;
+        })
+  }
+  function getMachineDeatilsByPage(accessToken,category,machineType,pageNumber)
+  {
+      return  cy.request({
+          method: 'GET',
+          url: `${apiconfig.baseUrl}${apiconfig.endpoints.getMachine}category=${category}&machineType=${machineType}&page=${pageNumber}`,
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+          failOnStatusCode: false, 
+        }).then((response) => {
+          return response;
+        })
+  }
   function getCompanyById(accessToken,userId)
 {
     return  cy.request({
@@ -303,6 +327,8 @@ function createShipment(payload, access_token) {
     createShipment,
     updateShipment,
     registerMachine,
+    getMachineDeatils,
+    getMachineDeatilsByPage,
     getCompanyById,
     getMachineDetailsByCompanyId,
     saveQuote,

@@ -57,8 +57,15 @@ const updateQuotePayload = {
     "quantity": 25
 }
 
+const serachMachine= {
+    category : "Cutting",
+    machineType : "Band Saw",
+}
+
+
 module.exports = {
     saveQuotePayload,
     updateQuotePayload,
-    registerMachinePayload
+    registerMachinePayload,
+    serachMachine
   };
