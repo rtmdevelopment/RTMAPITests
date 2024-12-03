@@ -4,9 +4,9 @@ const {  getQuotebyId,getAllQuotes,login,createShipment,registerMachine,saveQuot
     updateFirstSampleReport,createFinalReport,updateFinalReport
   } =
     require('../../support/utils/apiutils.js');
-    import { registerMachinePayload, saveQuotePayload, updateQuotePayload } from '../../fixtures/BookMachine';
+    import { registerMachinePayload, saveQuotePayload, updateQuotePayload } from '../../fixtures/BookMachine.js';
     const HirerLogin = require('../../fixtures/HirerLogin.json');
-const RenterLogin = require('../../fixtures/RenterLogin.json');
+    const RenterLogin = require('../../fixtures/RenterLogin.json');
 
 
 describe('Verify GetQuote API calls', () => {

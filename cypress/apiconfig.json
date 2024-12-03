@@ -6,6 +6,10 @@
       "shipmentUpdate": "/api/order/shipment/updateshipment",
       "login": "/api/users/login",
       "regMachine": "/api/machines/registerMachine",
+     "getMachine": "/api/booking/searchMachines?",
+     "getMachineByPage": " /api/booking/searchMachines?",
+      "companyById" : "/api/user/getcompanydetailsbyid?companyId=",
+      "machineDeatilsById" : "/api/machines/getMachinesByCompanyId",
       "saveQuote": "/api/booking/savequote",
       "updateQuote": "/api/booking/updatequote",
       "quoteById" : "/api/booking/getquoteinfo/",
@@ -16,7 +20,12 @@
       "FinalReport" : "/api/order/createfinalreport",
       "updateFinalReport" : "/api/order/updatefinalreport",
       "getAllOrder" : "/api/order/getAllOrders",
-      "getShipmentId": "/api/order/shipment/getshipmentinfo/"
+      "getShipmentId": "/api/order/shipment/getshipmentinfo/",
+       "getShipmentByOrderId": "/api/order/shipment/getshipmentbyorderid/",
+       "getFirstSampleByOrderId": "/api/order/getallfsreportsbyorderid/",
+       "getFinalReportByOrderId": "/api/order/getallfinalreportsbyorderid/"
+   
+   
    
 
 

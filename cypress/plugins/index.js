@@ -15,6 +15,8 @@ module.exports = (on, config) => {
           }
           resolve(results);
         });
+      }).finally(() => {
+        connection.end(); 
       });
     }
   });

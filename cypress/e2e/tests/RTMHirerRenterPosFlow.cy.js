@@ -190,7 +190,6 @@ describe('Hierer Renter postive flow', () => {
 
 
   })
-
   it('Validates Renter send Final Report ', () => {
     cy.log('Current Order Id before check:', orderId);
     /*  cy.wrap(orderId).should('not.be.empty'); */
@@ -244,6 +243,7 @@ describe('Hierer Renter postive flow', () => {
 
         });
       })
+ 
 
 
 
